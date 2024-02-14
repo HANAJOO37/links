@@ -101,18 +101,19 @@ let renderBlock = (block) => {
 		else if (attachment.includes('pdf')) {
             let pdfItem =
 			`
-			<li>
-				<p><em>pdf</em></p>
-				<figure>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</figure>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
-			</li>
-			`
+        <li>
+            <p><em>PDF</em></p>
+            <figure>
+                <object data="${block.pdf.url}" type="application/pdf" width="100%" height="500">
+                    <p>
+                    Unable to display PDF. <a href="${block.pdf.url}" target="_blank"> Download PDF </a>
+                    </p>
+                </object>
+            </figure>
+            ${block.description_html}
+            <p><a href="${block.source.url}">See the original ↗</a></p>
+        </li>
+        `;
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
 		}
 
