@@ -68,8 +68,15 @@ let renderBlock = (block) => {
 
 	// Text!
 	else if (block.class == 'Text') {
-		// …up to you!
-	}
+        let textItem =
+            `
+            <li>
+                <p><em>Text</em></p>
+                <div>${ block.content_html }</div>
+            </li>
+            `
+        channelBlocks.insertAdjacentHTML('beforeend', textItem)
+    }
 
 	// Uploaded (not linked) media…
 	else if (block.class == 'Attachment') {
