@@ -4,7 +4,12 @@ let markdownIt = document.createElement('script')
 markdownIt.src = 'https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js'
 document.head.appendChild(markdownIt)
 
+
+
+// Okay, Are.na stuff!
 let channelSlug = 'brain-pop-rocks' // The “slug” is just the end of the URL
+
+
 
 // First, let’s lay out some *functions*, starting with our basic metadata:
 let placeChannelInfo = (data) => {
@@ -49,26 +54,12 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
-		let imageItem =
-            `
-            <li>
-                <p><em>Image</em></p>
-                <img src="${block.image.original.url}" alt="${block.title}">
-            </li>
-            `
-        channelBlocks.insertAdjacentHTML('beforeend', imageItem)
+		// …up to you!
 	}
 
 	// Text!
 	else if (block.class == 'Text') {
-		let textItem =
-            `
-            <li>
-                <p><em>Text</em></p>
-                <div>${block.content_html}</div>
-            </li>
-            `
-		channelBlocks.insertAdjacentHTML('beforeend', textItem)
+		// …up to you!
 	}
 
 	// Uploaded (not linked) media…
@@ -92,19 +83,7 @@ let renderBlock = (block) => {
 
 		// Uploaded PDFs!
 		else if (attachment.includes('pdf')) {
-            let pdfItem =
-			`
-			<li>
-				<p><em>pdf</em></p>
-				<object data="${block.pdf.url}" type="application/pdf" width="100%" height="500">
-                <p>Unable to display PDF. <a href="${block.pdf.url}" target="_blank">Download PDF</a></p>
-                </object>
-                <h3>${block.title}</h3>
-                ${block.description_html}
-                <p><a href="${block.source.url}">See the original ↗</a></p>
-			</li>
-			`
-		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
+			// …up to you!
 		}
 
 		// Uploaded audio!
