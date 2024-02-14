@@ -99,21 +99,22 @@ let renderBlock = (block) => {
 
 		// Uploaded PDFs!
         else if (attachment.includes('pdf')) {
-            let pdfItem =
-                `
-                <li>
-                    <p><em>PDF</em></p>
-                    <figure>
-                        <object data="${ block.pdf.url }" type="application/pdf" width="100%" height="500">
-                        </object>
-                        <figcaption>${block.title}</figcaption>
-                    </figure>
-                    ${block.description_html}
-                    <p><a href="${block.source.url}">See the original ↗</a></p>
-                </li>
-                `;
-            channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
-        }
+				let pdfItem =
+					`
+					<li>
+						<p><em></em></p>
+						<picture>
+                    	<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+                   		<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+                    	<img src="${ block.image.original.url }">
+               			</picture>
+                		<h3>${ block.title }</h3>
+               			${ block.description_html }
+						<p><a href="${block.attachment.url}" target="_blank">See the original ↗</a></p>
+					</li>
+					`;
+					channelBlocks.insertAdjacentHTML('beforeend', pdfItem);
+		}
 
 		// Uploaded audio!
 		else if (attachment.includes('audio')) {
