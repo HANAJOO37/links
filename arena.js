@@ -72,7 +72,7 @@ let renderBlock = (block) => {
             `
             <li>
                 <p><em>Text</em></p>
-                <div>${ block.content_html }</div>
+                ${ block.content_html }
             </li>
             `
         channelBlocks.insertAdjacentHTML('beforeend', textItem)
