@@ -53,7 +53,7 @@ let renderBlock = (block) => {
             `
             <li>
                 <p><em>Image</em></p>
-                <img src="${block.image.attachment.url}" alt="${block.title}">
+                <img src="${block.image.original.url}" alt="${block.title}">
             </li>
             `
         channelBlocks.insertAdjacentHTML('beforeend', imageItem)
