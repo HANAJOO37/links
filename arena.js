@@ -103,14 +103,14 @@ let renderBlock = (block) => {
 			`
 			<li>
 				<p><em>pdf</em></p>
-				<picture>
+				<figure>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
-				</picture>
+				</figure>
 				<h3>${ block.title }</h3>
 				${ block.description_html }
-				<p><a href="${ block.attachment.url }">See the original ↗</a></p>
+				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', pdfItem)
