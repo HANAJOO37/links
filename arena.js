@@ -50,38 +50,24 @@ let renderBlock = (block) => {
 	// Images!
 	else if (block.class == 'Image') {
 		let ImageItem =
-			`
-			<li>
-				<p><em>Image</em></p>
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
-			</li>
-			`
-		channelBlocks.insertAdjacentHTML('beforeend', ImageItem)
+            `
+            <li>
+                <p><em>Image</em></p>
+                <img src="${ block.image.attachment.url}">
+            </li>
+            `
+        channelBlocks.insertAdjacentHTML('beforeend', ImageItem)
 	}
 
 	// Text!
 	else if (block.class == 'Text') {
 		let TextItem =
-			`
-			<li>
-				<p><em>Text</em></p>
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
-			</li>
-			`
+            `
+            <li>
+                <p><em>Text</em></p>
+                <div>${block.content_html}</div>
+            </li>
+            `
 		channelBlocks.insertAdjacentHTML('beforeend', TextItem)
 	}
 
@@ -109,15 +95,13 @@ let renderBlock = (block) => {
             let PdfItem =
 			`
 			<li>
-				<p><em>Text</em></p>
-				<picture>
-					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
-					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
-					<img src="${ block.image.original.url }">
-				</picture>
-				<h3>${ block.title }</h3>
-				${ block.description_html }
-				<p><a href="${ block.source.url }">See the original ↗</a></p>
+				<p><em>pdf</em></p>
+				<object data="${block.pdf.url}" type="application/pdf" width="100%" height="500">
+                <p>Unable to display PDF. <a href="${block.pdf.url}" target="_blank">Download PDF</a></p>
+                </object>
+                <h3>${block.title}</h3>
+                ${block.description_html}
+                <p><a href="${block.source.url}">See the original ↗</a></p>
 			</li>
 			`
 		channelBlocks.insertAdjacentHTML('beforeend', PdfItem)
