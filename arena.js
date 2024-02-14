@@ -4,12 +4,7 @@ let markdownIt = document.createElement('script')
 markdownIt.src = 'https://cdn.jsdelivr.net/npm/markdown-it@14.0.0/dist/markdown-it.min.js'
 document.head.appendChild(markdownIt)
 
-
-
-// Okay, Are.na stuff!
 let channelSlug = 'brain-pop-rocks' // The “slug” is just the end of the URL
-
-
 
 // First, let’s lay out some *functions*, starting with our basic metadata:
 let placeChannelInfo = (data) => {
@@ -54,12 +49,40 @@ let renderBlock = (block) => {
 
 	// Images!
 	else if (block.class == 'Image') {
-		// …up to you!
+		let ImageItem =
+			`
+			<li>
+				<p><em>Image</em></p>
+				<picture>
+					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<h3>${ block.title }</h3>
+				${ block.description_html }
+				<p><a href="${ block.source.url }">See the original ↗</a></p>
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', ImageItem)
 	}
 
 	// Text!
 	else if (block.class == 'Text') {
-		// …up to you!
+		let TextItem =
+			`
+			<li>
+				<p><em>Text</em></p>
+				<picture>
+					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<h3>${ block.title }</h3>
+				${ block.description_html }
+				<p><a href="${ block.source.url }">See the original ↗</a></p>
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', TextItem)
 	}
 
 	// Uploaded (not linked) media…
@@ -83,7 +106,21 @@ let renderBlock = (block) => {
 
 		// Uploaded PDFs!
 		else if (attachment.includes('pdf')) {
-			// …up to you!
+            let PdfItem =
+			`
+			<li>
+				<p><em>Text</em></p>
+				<picture>
+					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
+					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
+					<img src="${ block.image.original.url }">
+				</picture>
+				<h3>${ block.title }</h3>
+				${ block.description_html }
+				<p><a href="${ block.source.url }">See the original ↗</a></p>
+			</li>
+			`
+		channelBlocks.insertAdjacentHTML('beforeend', PdfItem)
 		}
 
 		// Uploaded audio!
