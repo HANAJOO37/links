@@ -37,7 +37,7 @@ let renderBlock = (block) => {
 	if (block.class == 'Link') {
 		let linkItem =
 			`
-			<li>
+			<li class="file">
 				<p><em>Link</em></p>
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
@@ -56,7 +56,7 @@ let renderBlock = (block) => {
 	else if (block.class == 'Image') {
 		let imageItem =
             `
-            <li>
+            <li class="file">
                 <p><em>Image</em></p>
                 <figure>
                 <img src="${ block.image.original.url }" alt="${ block.title }">
@@ -70,7 +70,7 @@ let renderBlock = (block) => {
 	else if (block.class == 'Text') {
         let textItem =
             `
-            <li>
+            <li class="file">
                 <p><em>Text</em></p>
                 ${ block.content_html }
             </li>
@@ -87,7 +87,7 @@ let renderBlock = (block) => {
 			// …still up to you, but we’ll give you the `video` element:
 			let videoItem =
 				`
-				<li>
+				<li class="file">
 					<p><em>Video</em></p>
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
@@ -101,7 +101,7 @@ let renderBlock = (block) => {
         else if (attachment.includes('pdf')) {
 			let pdfItem =
                 `
-				<li>
+				<li class="file">
                     <iframe src="${ block.attachment.url }" frameborder="0" allowfullscreen></iframe>
                 </li>
 				`
@@ -113,7 +113,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an `audio` element:
 			let audioItem =
 				`
-				<li>
+				<li class="file">
 					<p><em>Audio</em></p>
 					<audio controls src="${ block.attachment.url }"></video>
 				</li>
@@ -132,7 +132,7 @@ let renderBlock = (block) => {
 			// …still up to you, but here’s an example `iframe` element:
 			let linkedVideoItem =
 				`
-				<li>
+				<li class="file">
 					<p><em>Linked Video</em></p>
 					${ block.embed.html }
 				</li>
@@ -163,31 +163,17 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-// let showRandomContent = () => {
-//     let channelBlocks = document.getElementById('channel-blocks');
-//     let allBlocks = channelBlocks.querySelectorAll('li');
-
-// 	allBlocks.forEach(block => {
-//         block.style.display = 'none';
-//     });
-
-// 	let randomIndex = Math.floor(Math.random()*allBlocks.length);
-// 	let randomBlock = allBlocks[randomIndex];
-
-// 	randomBlock.style.display = 'block';
-// }
-
 function hideAllFiles() {
-  const files = document.querySelectorAll("li");
+  const files = document.querySelectorAll("li.file");
   for (const file of files) {
-    file.style.display = "none";
+    file.classList.add("hidden");
   }
 }
 
 function showRandomFile() {
-  const files = document.querySelectorAll("li");
+  const files = document.querySelectorAll("li.file");
   const randomIndex = Math.floor(Math.random() * files.length);
-  files[randomIndex].style.display = "block";
+  files[randomIndex].classList.remove("hidden");
 }
 
 window.addEventListener("load", hideAllFiles);
