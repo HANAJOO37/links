@@ -165,13 +165,29 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 
-function renderRandomBlock(data) {
-	const randomIndex = Math.floor(Math.random() * data.contents.length);
-	const randomBlock = data.contents[randomIndex];
+// function renderRandomBlock(data) {
+// 	const randomIndex = Math.floor(Math.random() * data.contents.length);
+// 	const randomBlock = data.contents[randomIndex];
   
-	const channelBlocks = document.querySelector('#channel-blocks');
-	channelBlocks.innerHTML = renderBlock(randomBlock);
-  }
+// 	const channelBlocks = document.querySelector('#channel-blocks');
+// 	channelBlocks.innerHTML = renderBlock(randomBlock);
+//   }
+  
+// document.getElementById("random-button").addEventListener("click", renderRandomBlock);
+
+function renderRandomBlock() {
+	const files = document.querySelectorAll('li.file');
+	const randomIndex = Math.floor(Math.random() * files.length);
+	const randomFile = files[randomIndex];
+  
+	for (const file of files) {
+	  if (file === randomFile) {
+		file.classList.remove('hidden');
+	  } else {
+		file.classList.add('hidden');
+	  }
+	}
+}
   
 document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
