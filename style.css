@@ -6,7 +6,12 @@ body {
 }
 
 h1 {
-    color: red;
+	text-transform: capitalize;
+	font-family: "Rubik Moonrocks", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 40px;
+	color: black;
 }
 
 body, header, section, ul, li, footer, address {
@@ -63,10 +68,3 @@ button:hover {
 	background-color: rgb(250, 148, 204);
 }
 
-#channel-title {
-	text-transform: capitalize;
-	font-family: "Rubik Moonrocks", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-	font-size: 40px;
-}
