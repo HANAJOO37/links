@@ -165,7 +165,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 $(document).ready(function () {
-    $("#channel-blocks").hide();
+    $("#channel-blocks li.file").hide();
 });
 
 // document.getElementById("random-button").addEventListener("click", function () {
