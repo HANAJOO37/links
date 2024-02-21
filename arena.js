@@ -163,12 +163,16 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
+
+
 let showRandomContent = (data) => {
-    const randomIndex = Math.floor(Math.random() * data.contents.length);
-    const randomContent = data.contents[randomIndex];
+    let randomIndex = Math.floor(Math.random() * data.contents.length);
+    let randomBlock = data.contents[randomIndex];
     
-    renderBlock(randomContent);
+    renderBlock(randomBlock);
 };
+
+
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
