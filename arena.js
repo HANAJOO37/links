@@ -165,18 +165,16 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 let showRandomContent = () => {
     let channelBlocks = document.getElementById('channel-blocks');
-    let elementsToHide = channelBlocks.querySelectorAll('li');
+    let allBlocks = channelBlocks.querySelectorAll('li');
 
-	elementsToHide.forEach(element => {
-        element.style.display = "none";
+	allBlocks.forEach(block => {
+        block.style.display = 'none';
     });
 
-	let randomIndex = Math.floor(Math.random() * elementsToHide.length);
-	let randomBlock = elementsToHide[randomIndex];
+	let randomIndex = Math.floor(Math.random() * allBlocks.length);
+	let randomBlock = allBlocks[randomIndex];
 
-	console.log("Randomly selected block:", randomBlock);
-	
-	randomBlock.style.display = "block";
+	randomBlock.style.display = 'block';
 }
 
 
@@ -197,9 +195,6 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers);
-
-		let changeButton = document.getElementById('changeButton');
-		changeButton.addEventListener('click', showRandomContent);
 	})
 
 
