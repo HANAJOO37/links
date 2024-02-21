@@ -164,20 +164,23 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
+const files = document.querySelectorAll('#channel-blocks li');
 
-let showRandomContent = (data) => {
-    let fileBlocks = data.contents.filter(block => block.class === 'file');
+for (const file of files) {
+    file.classList.add('hidden');
+}
 
-    if (fileBlocks.length > 0) {
-        let randomIndex = Math.floor(Math.random() * fileBlocks.length);
-        let randomBlock = fileBlocks[randomIndex];
+// document.getElementById("random-button").addEventListener("click", function () {
+//     for (const file of files) {
+//         file.classList.add('hidden');
+//     }
 
-        console.log("Randomly selected block:", randomBlock);
-        renderBlock(randomBlock);
-    } else {
-        console.log("No blocks with class 'file' found.");
-    }
-};
+//     const randomIndex = Math.floor(Math.random() * data.contents.length);
+//     const randomContent = data.contents[randomIndex];
+
+//     renderBlock(randomContent);
+// });
+
 
 
 // Now that we have said what we can do, go get the data:
@@ -197,7 +200,4 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
-
-		let randomButton = document.getElementById('random-button');
-        randomButton.addEventListener('click', () => showRandomContent(data));
 	})
