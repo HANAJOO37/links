@@ -164,7 +164,9 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
-$("#channel-blocks").hide();
+$(document).ready(function () {
+    $("#channel-blocks").hide();
+});
 
 // document.getElementById("random-button").addEventListener("click", function () {
 //     for (const file of files) {
