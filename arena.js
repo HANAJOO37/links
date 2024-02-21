@@ -165,24 +165,22 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 
-function getRandomContent(data) {
+function renderBlock(block) {
+	let channelBlocks = document.querySelector('.channel-blocks');
+	channelBlocks.appendChild(blockElement);
+}
+  
+function renderRandomBlock(data) {
 	const randomIndex = Math.floor(Math.random() * data.contents.length);
-	return data.contents[randomIndex];
+	const randomBlock = data.contents[randomIndex];
+  
+	document.querySelector('.channel-blocks').innerHTML = "";
+	renderBlock(randomBlock);
 }
+  
+document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
-function renderBlock(content) {
-	const contentElement = document.createElement('div'); // 콘텐츠를 감싸는 div 생성
-	contentElement.innerHTML = content; // 랜덤 콘텐츠 HTML을 div에 추가
-	return contentElement;
-}
 
-// 랜덤 콘텐츠 
-document.getElementById("random-button").addEventListener("click", function() {
-	const randomContent = getRandomContent(data);
-	const channelBlocks = document.querySelector('.channel-blocks');
-	channelBlocks.innerHTML = "";
-	channelBlocks.appendChild(renderBlock(randomContent)); 
-});
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
