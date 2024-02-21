@@ -163,14 +163,20 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-function getRandomContent(data) {
-	const randomIndex = Math.floor(Math.random() * data.contents.length);
-	return data.contents[randomIndex];
+function renderBlock(content) {
+	const contentElement = document.createElement('div'); // 콘텐츠를 감싸는 div 생성
+	contentElement.innerHTML = content; // 랜덤 콘텐츠 HTML을 div에 추가
+	document.getElementsByClassName('channel-blocks').replaceChildren(contentElement); // div를 "channel-blocks" 요소에 추가
 }
+
+// function getRandomContent(data) {
+// 	const randomIndex = Math.floor(Math.random() * data.contents.length);
+// 	return data.contents[randomIndex];
+// }
 // 랜덤 콘텐츠 
 document.getElementById("random-button").addEventListener("click", function() {
 	const randomContent = getRandomContent(data);
-	document.getElementsByClassName("channel-blocks").innerHTML = "";
+	document.getElementsByClassName("channel-blocks")[0].innerHTML = "";
 	renderBlock(randomContent);
 });
 
