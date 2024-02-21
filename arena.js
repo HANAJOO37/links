@@ -166,12 +166,18 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 let showRandomContent = (data) => {
-    let randomIndex = Math.floor(Math.random() * data.contents.length);
-    let randomBlock = data.contents[randomIndex];
-    
-    renderBlock(randomBlock);
-};
+    let fileBlocks = data.contents.filter(block => block.class === 'file');
 
+    if (fileBlocks.length > 0) {
+        let randomIndex = Math.floor(Math.random() * fileBlocks.length);
+        let randomBlock = fileBlocks[randomIndex];
+
+        console.log("Randomly selected block:", randomBlock);
+        renderBlock(randomBlock);
+    } else {
+        console.log("No blocks with class 'file' found.");
+    }
+};
 
 
 // Now that we have said what we can do, go get the data:
