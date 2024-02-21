@@ -166,16 +166,24 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 
-// document.getElementById("random-button").addEventListener("click", function () {
-//     for (const file of files) {
-//         file.classList.add('hidden');
-//     }
+const files = document.querySelectorAll('#channel-blocks li');
 
-//     const randomIndex = Math.floor(Math.random() * data.contents.length);
-//     const randomContent = data.contents[randomIndex];
+for (const file of files) {
+    file.classList.add('hidden');
+}
 
-//     renderBlock(randomContent);
-// });
+document.getElementById("random-button").addEventListener("click", function () {
+    for (const file of files) {
+        file.classList.add('hidden');
+    }
+
+    const randomIndex = Math.floor(Math.random() * data.contents.length);
+    const randomContent = data.contents[randomIndex];
+
+    renderBlock(randomContent);
+});
+
+
 
 
 // Now that we have said what we can do, go get the data:
