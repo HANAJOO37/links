@@ -24,3 +24,41 @@ p { max-width: 50ch; }
 button:hover {
 	cursor: pointer;
 }
+
+#popup-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 10;
+	display: none;
+}
+  
+#popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	height: 200px;
+	background-color: #fff;
+	border-radius: 10px;
+	z-index: 11;
+	padding: 20px;
+	text-align: center;
+	display: none;
+}
+  
+#popup button {
+	margin: 10px;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+  
+#popup button:hover {
+	background-color: rgb(250, 148, 204);
+}

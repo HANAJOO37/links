@@ -196,3 +196,28 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 	})
+
+
+const popupBg = document.getElementById('popup-bg');
+const popup = document.getElementById('popup');
+const rememberButton = document.getElementById('remember-button');
+const forgetButton = document.getElementById('forget-button');
+
+function openPopup() {
+  popupBg.style.display = 'block';
+  popup.style.display = 'block';
+}
+
+function closePopup() {
+  popupBg.style.display = 'none';
+  popup.style.display = 'none';
+}
+
+rememberButton.addEventListener('click', closePopup);
+
+forgetButton.addEventListener('click', () => {
+  closePopup();
+  window.close();
+});
+
+window.addEventListener('load', openPopup);
