@@ -163,19 +163,36 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-let showRandomContent = () => {
-    let channelBlocks = document.getElementById('channel-blocks');
-    let allBlocks = channelBlocks.querySelectorAll('li');
+// let showRandomContent = () => {
+//     let channelBlocks = document.getElementById('channel-blocks');
+//     let allBlocks = channelBlocks.querySelectorAll('li');
 
-	allBlocks.forEach(block => {
-        block.style.display = 'none';
-    });
+// 	allBlocks.forEach(block => {
+//         block.style.display = 'none';
+//     });
 
-	let randomIndex = Math.floor(Math.random() * allBlocks.length);
-	let randomBlock = allBlocks[randomIndex];
+// 	let randomIndex = Math.floor(Math.random()*allBlocks.length);
+// 	let randomBlock = allBlocks[randomIndex];
 
-	randomBlock.style.display = 'block';
+// 	randomBlock.style.display = 'block';
+// }
+
+function hideAllFiles() {
+  const files = document.querySelectorAll("li");
+  for (const file of files) {
+    file.style.display = "none";
+  }
 }
+
+function showRandomFile() {
+  const files = document.querySelectorAll("li");
+  const randomIndex = Math.floor(Math.random() * files.length);
+  files[randomIndex].style.display = "block";
+}
+
+window.addEventListener("load", hideAllFiles);
+
+document.getElementById("showRandomFileButton").addEventListener("click", showRandomFile);
 
 
 // Now that we have said what we can do, go get the data:
