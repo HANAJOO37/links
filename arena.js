@@ -163,16 +163,18 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-let showRandomImage = () => {
-	let channelBlocks = document.getElementById('channel-blocks');
-	let elementsToHide = channelBlocks.querySelectorAll('li');
+let showRandomContent = () => {
+    let channelBlocks = document.getElementById('channel-blocks');
+    let elementsToHide = channelBlocks.querySelectorAll('li');
 
 	elementsToHide.forEach(element => {
-		element.style.display = "none";
-	});
+        element.style.display = "none";
+    });
 
 	let randomIndex = Math.floor(Math.random() * elementsToHide.length);
 	let randomBlock = elementsToHide[randomIndex];
+	
+	console.log(randomBlock);
 
 	randomBlock.style.display = "block";
 }
@@ -197,7 +199,7 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		renderUser(data.user, channelUsers);
 
 		let changeButton = document.getElementById('changeButton');
-		changeButton.addEventListener('click', showRandomImage);
+		changeButton.addEventListener('click', showRandomContent);
 	})
 
 
