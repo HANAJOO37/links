@@ -164,9 +164,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
-$(document).ready(function () {
-    $("#channel-blocks li.file").hide();
-});
+
 
 // document.getElementById("random-button").addEventListener("click", function () {
 //     for (const file of files) {
@@ -179,9 +177,6 @@ $(document).ready(function () {
 //     renderBlock(randomContent);
 // });
 
-$(document).ready(function() {
-    alert("Hello, jQuery!");  
-});
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
