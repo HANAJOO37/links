@@ -164,11 +164,11 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
-const files = document.querySelectorAll('#channel-blocks li');
+const files = channelBlocks.querySelectorAll('li');
 
-for (const file of files) {
-    file.classList.add('hidden');
-}
+files.forEach(file => {
+    file.style.display = 'none';
+});
 
 // document.getElementById("random-button").addEventListener("click", function () {
 //     for (const file of files) {
