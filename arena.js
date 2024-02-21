@@ -163,30 +163,6 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-window.addEventListener("load", function() {
-	hideAllFiles();
-  });
-
-function hideAllFiles() {
-  const files = document.querySelectorAll(".file");
-  for (const file of files) {
-    file.classList.add("hidden");
-  }
-}
-
-document.getElementById("showRandomFileButton").addEventListener("click", showRandomFile);
-
-function showRandomFile() {
-  const files = document.querySelectorAll(".file");
-  for (const file of files) {
-    file.classList.remove("hidden");
-  }
-  const randomIndex = Math.floor(Math.random() * files.length);
-  const file = files[randomIndex];
-  file.classList.add("visible");
-}
-
-
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
 	.then((response) => response.json()) // Return it as JSON data
@@ -203,7 +179,28 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		// Also display the owner and collaborators:
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
-		renderUser(data.user, channelUsers);
+		renderUser(data.user, channelUsers)
 	})
 
-
+	//window.addEventListener("load", function() {
+	// 	hideAllFiles();
+	//   });
+	
+	// function hideAllFiles() {
+	//   const files = document.querySelectorAll(".file");
+	//   for (const file of files) {
+	// 	file.classList.add("hidden");
+	//   }
+	// }
+	
+	// document.getElementById("showRandomFileButton").addEventListener("click", showRandomFile);
+	
+	// function showRandomFile() {
+	//   const files = document.querySelectorAll(".file");
+	//   for (const file of files) {
+	// 	file.classList.remove("hidden");
+	//   }
+	//   const randomIndex = Math.floor(Math.random() * files.length);
+	//   const file = files[randomIndex];
+	//   file.classList.add("visible");
+	// }
