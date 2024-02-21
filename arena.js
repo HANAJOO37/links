@@ -179,7 +179,9 @@ $(document).ready(function () {
 //     renderBlock(randomContent);
 // });
 
-
+$(document).ready(function() {
+    alert("Hello, jQuery!");  
+});
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
