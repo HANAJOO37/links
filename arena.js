@@ -165,7 +165,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 let showRandomContent = () => {
     let channelBlocks = document.getElementById('channel-blocks');
-    let elementsToHide = channelBlocks.querySelectorAll('li');
+    let elementsToHide = channelBlocks.querySelectorAll('.content-to-hide');
 
 	elementsToHide.forEach(element => {
         element.style.display = "none";
