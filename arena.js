@@ -168,21 +168,12 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 const files = document.querySelectorAll('#channel-blocks li');
 
-for (const file of files) {
-    file.classList.add('hidden');
-}
+const randomIndex = Math.floor(Math.random() * files.length);
+const randomFile = files[randomIndex];
 
-document.getElementById("random-button").addEventListener("click", function () {
-    for (const file of files) {
-        file.classList.add('hidden');
-    }
+const randomContent = randomFile.cloneNode(true);
 
-    const randomIndex = Math.floor(Math.random() * data.contents.length);
-    const randomContent = data.contents[randomIndex];
-
-    renderBlock(randomContent);
-});
-
+document.body.appendChild(randomContent)
 
 
 
