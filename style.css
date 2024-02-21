@@ -21,6 +21,6 @@ em { font-style: italic; }
 strong { font-weight: bold; }
 p { max-width: 50ch; }
 
-button {
+button:hover {
 	cursor: pointer;
 }
