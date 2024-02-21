@@ -31,7 +31,7 @@ let placeChannelInfo = (data) => {
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
-	let channelBlocks = document.getElementsByClassName('channel-blocks')
+	let channelBlocks = document.getElementsById('channel-blocks')
 
 	// Links!
 	if (block.class == 'Link') {
