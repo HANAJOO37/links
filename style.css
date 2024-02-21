@@ -21,10 +21,3 @@ em { font-style: italic; }
 strong { font-weight: bold; }
 p { max-width: 50ch; }
 
-li {
-	display: none;
-  }
-  
-li.visible {
-	display: block;
-  }

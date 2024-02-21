@@ -163,22 +163,28 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
+window.addEventListener("load", function() {
+	hideAllFiles();
+  });
+
 function hideAllFiles() {
-  const files = document.querySelectorAll("li.file");
+  const files = document.querySelectorAll(".file");
   for (const file of files) {
     file.classList.add("hidden");
   }
 }
 
-function showRandomFile() {
-  const files = document.querySelectorAll("li.file");
-  const randomIndex = Math.floor(Math.random() * files.length);
-  files[randomIndex].classList.remove("hidden");
-}
-
-window.addEventListener("load", hideAllFiles);
-
 document.getElementById("showRandomFileButton").addEventListener("click", showRandomFile);
+
+function showRandomFile() {
+  const files = document.querySelectorAll(".file");
+  for (const file of files) {
+    file.classList.remove("hidden");
+  }
+  const randomIndex = Math.floor(Math.random() * files.length);
+  const file = files[randomIndex];
+  file.classList.add("visible");
+}
 
 
 // Now that we have said what we can do, go get the data:
