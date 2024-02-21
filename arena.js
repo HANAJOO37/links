@@ -165,20 +165,20 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 
-function renderBlock(block) {
-	let channelBlocks = document.querySelector('.channel-blocks');
-	channelBlocks.appendChild(blockElement);
-}
+// function renderBlock(block) {
+// 	let channelBlocks = document.querySelector('.channel-blocks');
+// 	channelBlocks.appendChild(blockElement);
+// }
   
-function renderRandomBlock(data) {
-	const randomIndex = Math.floor(Math.random() * data.contents.length);
-	const randomBlock = data.contents[randomIndex];
+// function renderRandomBlock(data) {
+// 	const randomIndex = Math.floor(Math.random() * data.contents.length);
+// 	const randomBlock = data.contents[randomIndex];
   
-	document.querySelector('.channel-blocks').innerHTML = "";
-	renderBlock(randomBlock);
-}
+// 	document.querySelector('.channel-blocks').innerHTML = "";
+// 	renderBlock(randomBlock);
+// }
   
-document.getElementById("random-button").addEventListener("click", renderRandomBlock);
+// document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
 
 
@@ -200,30 +200,3 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
 	})
-
-
-	
-
-
-	//window.addEventListener("load", function() {
-	// 	hideAllFiles();
-	//   });
-	
-	// function hideAllFiles() {
-	//   const files = document.querySelectorAll(".file");
-	//   for (const file of files) {
-	// 	file.classList.add("hidden");
-	//   }
-	// }
-	
-	// document.getElementById("showRandomFileButton").addEventListener("click", showRandomFile);
-	
-	// function showRandomFile() {
-	//   const files = document.querySelectorAll(".file");
-	//   for (const file of files) {
-	// 	file.classList.remove("hidden");
-	//   }
-	//   const randomIndex = Math.floor(Math.random() * files.length);
-	//   const file = files[randomIndex];
-	//   file.classList.add("visible");
-	// }
