@@ -174,9 +174,32 @@ let showRandomContent = () => {
 	let randomIndex = Math.floor(Math.random() * elementsToHide.length);
 	let randomBlock = elementsToHide[randomIndex];
 	
-	console.log(randomBlock);
-
 	randomBlock.style.display = "block";
+
+	let blockType = randomBlock.getAttribute('data-block-type');
+	
+	switch (blockType) {
+        case 'Link':
+            break;
+        case 'Image':
+            break;
+        case 'Text':
+            break;
+        case 'Attachment':
+            break;
+        case 'Media':
+			break;
+		default:
+    }
+}
+
+let renderBlock = (block) => {
+    let channelBlocks = document.getElementById('channel-blocks');
+
+	let blockItem = document.createElement('li');
+	blockItem.setAttribute('data-block-type', block.class);
+	
+	channelBlocks.appendChild(blockItem);
 }
 
 
