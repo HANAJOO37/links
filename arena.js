@@ -163,6 +163,19 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
+let showRandomImage = () => {
+	let channelBlocks = document.getElementById('channel-blocks');
+	let elementsToHide = channelBlocks.querySelectorAll('li');
+
+	elementsToHide.forEach(element => {
+		element.style.display = "none";
+	});
+
+	let randomIndex = Math.floor(Math.random() * elementsToHide.length);
+	let randomBlock = elementsToHide[randomIndex];
+
+	randomBlock.style.display = "block";
+}
 
 
 // Now that we have said what we can do, go get the data:
@@ -181,5 +194,10 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		// Also display the owner and collaborators:
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
-		renderUser(data.user, channelUsers)
+		renderUser(data.user, channelUsers);
+
+		let changeButton = document.getElementById('changeButton');
+		changeButton.addEventListener('click', showRandomImage);
 	})
+
+
