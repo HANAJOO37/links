@@ -182,6 +182,17 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		renderUser(data.user, channelUsers)
 	})
 
+
+	function getRandomContent(data) {
+		const randomIndex = Math.floor(Math.random() * data.contents.length);
+		return data.contents[randomIndex];
+	}
+
+	document.getElementById('random-button').addEventListener("click", function() {
+		const randomContent = getRandomContent(data);
+		renderBlock(randomContent);
+	});
+
 	//window.addEventListener("load", function() {
 	// 	hideAllFiles();
 	//   });
