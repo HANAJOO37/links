@@ -31,7 +31,7 @@ let placeChannelInfo = (data) => {
 // Then our big function for specific-block-type rendering:
 let renderBlock = (block) => {
 	// To start, a shared `ul` where we’ll insert all our blocks
-	let channelBlocks = document.getElementById('channel-blocks')
+	let channelBlocks = document.getElementsByClassName('channel-blocks')
 
 	// Links!
 	if (block.class == 'Link') {
@@ -170,7 +170,7 @@ function getRandomContent(data) {
 // 랜덤 콘텐츠 
 document.getElementById("random-button").addEventListener("click", function() {
 	const randomContent = getRandomContent(data);
-	document.getElementById("channel-blocks").innerHTML = "";
+	document.getElementsByClassName("channel-blocks").innerHTML = "";
 	renderBlock(randomContent);
 });
 
