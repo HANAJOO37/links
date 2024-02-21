@@ -163,34 +163,12 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 	container.insertAdjacentHTML('beforeend', userAddress)
 }
 
-
-
-// function renderRandomBlock(data) {
-// 	const randomIndex = Math.floor(Math.random() * data.contents.length);
-// 	const randomBlock = data.contents[randomIndex];
-  
-// 	const channelBlocks = document.querySelector('#channel-blocks');
-// 	channelBlocks.innerHTML = renderBlock(randomBlock);
-//   }
-  
-// document.getElementById("random-button").addEventListener("click", renderRandomBlock);
-
-const files = document.querySelectorAll('li.file');
-
-for (const file of files) {
-  file.classList.add('hidden');
-}
-
-document.getElementById("random-button").addEventListener("click", function() {
-  for (const file of files) {
-    file.classList.add('hidden');
-  }
-
-  const randomIndex = Math.floor(Math.random() * data.contents.length);
-  const randomContent = data.contents[randomIndex];
-
-  renderBlock(randomContent);
-});
+let showRandomContent = (data) => {
+    const randomIndex = Math.floor(Math.random() * data.contents.length);
+    const randomContent = data.contents[randomIndex];
+    
+    renderBlock(randomContent);
+};
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
@@ -209,4 +187,7 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		let channelUsers = document.getElementById('channel-users') // Show them together
 		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
 		renderUser(data.user, channelUsers)
+
+		let randomButton = document.getElementById('random-button');
+        randomButton.addEventListener('click', () => showRandomContent(data));
 	})
