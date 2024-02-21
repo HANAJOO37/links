@@ -165,20 +165,15 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 
 
 
-// function renderBlock(block) {
-// 	let channelBlocks = document.querySelector('.channel-blocks');
-// 	channelBlocks.appendChild(blockElement);
-// }
+function renderRandomBlock(data) {
+	const randomIndex = Math.floor(Math.random() * data.contents.length);
+	const randomBlock = data.contents[randomIndex];
   
-// function renderRandomBlock(data) {
-// 	const randomIndex = Math.floor(Math.random() * data.contents.length);
-// 	const randomBlock = data.contents[randomIndex];
+	const channelBlocks = document.querySelector('#channel-blocks');
+	channelBlocks.innerHTML = renderBlock(randomBlock);
+  }
   
-// 	document.querySelector('.channel-blocks').innerHTML = "";
-// 	renderBlock(randomBlock);
-// }
-  
-// document.getElementById("random-button").addEventListener("click", renderRandomBlock);
+document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
 
 
