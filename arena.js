@@ -175,23 +175,22 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
   
 // document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
-function renderRandomBlock() {
-	const files = document.querySelectorAll('li.file');
-	const randomIndex = Math.floor(Math.random() * files.length);
-	const randomFile = files[randomIndex];
-  
-	for (const file of files) {
-	  if (file === randomFile) {
-		file.classList.remove('hidden');
-	  } else {
-		file.classList.add('hidden');
-	  }
-	}
+const files = document.querySelectorAll('li.file');
+
+for (const file of files) {
+  file.classList.add('hidden');
 }
-  
-document.getElementById("random-button").addEventListener("click", renderRandomBlock);
 
+document.getElementById("random-button").addEventListener("click", function() {
+  for (const file of files) {
+    file.classList.add('hidden');
+  }
 
+  const randomIndex = Math.floor(Math.random() * data.contents.length);
+  const randomContent = data.contents[randomIndex];
+
+  renderBlock(randomContent);
+});
 
 // Now that we have said what we can do, go get the data:
 fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-store' })
