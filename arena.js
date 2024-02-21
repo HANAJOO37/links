@@ -221,11 +221,7 @@ function closePopup() {
   popup.style.display = 'none';
 }
 
-rememberButton.addEventListener('click', closePopup);
 
-forgetButton.addEventListener('click', () => {
-  closePopup();
-  window.close();
-});
+forgetButton.addEventListener('click', closePopup);
 
 window.addEventListener('load', openPopup);
