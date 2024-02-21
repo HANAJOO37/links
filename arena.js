@@ -164,11 +164,7 @@ let renderUser = (user, container) => { // You can have multiple arguments for a
 }
 
 
-const files = channelBlocks.querySelectorAll('li');
-
-files.forEach(file => {
-    file.style.display = 'none';
-});
+$("#channel-blocks").hide();
 
 // document.getElementById("random-button").addEventListener("click", function () {
 //     for (const file of files) {
