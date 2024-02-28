@@ -65,13 +65,3 @@
     all: revert;
   }
 
-  li {
-    opacity: 0;
-    transform: scale(0.1); 
-    transition: opacity 0.5s, transform 0.2s;
-  }
-
-  li.active {
-    opacity: 1;
-    transform: scale(1); 
-  }

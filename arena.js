@@ -44,8 +44,9 @@ let renderBlock = (block) => {
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
 					<img src="${ block.image.original.url }">
 				</picture>
-				<h3>${ block.title }</h3>
+				<p class="description-wrapper">
 				${ block.description_html }
+				</p>
 				<p><a href="${ block.source.url }">See the original ↗</a></p>
 			</li>
 			`
@@ -244,42 +245,19 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 	
 
 
-// window.addEventListener('scroll', function() {
-// 	var scrollPosition = window.scrollY;
-// 	var threshold = 200;
-
-// 	var elements = document.querySelectorAll('li');
-
-// 	elements.forEach(function(element) {
-// 	  var elementOffset = element.offsetTop;
-// 	  var distance = scrollPosition - elementOffset;
-
-// 	  if (distance > 0 && distance < threshold) {
-// 		element.classList.add('active');
-// 	  } else {
-// 		element.classList.remove('active');
-// 	  }
-// 	});
-//   });
-
 window.addEventListener('scroll', function() {
 	var windowHeight = window.innerHeight;
 	var scrollPosition = window.scrollY;
 	var elements = document.querySelectorAll('li');
-
+  
 	elements.forEach(function(element) {
 	  var elementRect = element.getBoundingClientRect();
-	  var elementHeight = elementRect.height;
 	  var elementTop = elementRect.top;
-
-	  // Adjusted threshold value
+  
 	  var threshold = windowHeight / 2;
-
-	  // Check if the center of the element is in the middle region of the viewport
-	  if (elementTop < windowHeight / 2 && elementTop + elementHeight > windowHeight / 2) {
+  
+	  if (elementTop < windowHeight / 2) {
 		element.classList.add('active');
-	  } else {
-		element.classList.remove('active');
 	  }
 	});
   });
