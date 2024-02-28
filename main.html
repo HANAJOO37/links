@@ -16,17 +16,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rubik+Gemstones&family=Rubik+Moonrocks&family=VT323&display=swap" rel="stylesheet">
-	</head>
-	<body>
+    </head>
+    
+    <body>
 		<div class="white-rectangle">
-        <header class="glitter">
-			<img src="sources/glitter.gif" alt="glitter">
+        <header>
 			<h1 id="channel-title">
 			</h1>
 			<section class="introduction">
-			<p><a href="main.html" class="link" target="_blank"><button>See my brain ↗</button></a></a>
-			<a href="author.html" class="link" target="_blank"><button>See authors ↗</button></a></p>
-			<!-- <p id="channel-description"></p> -->
+			<p><a id="channel-link" class="link" target="_blank">See on Are.na ↗</a></p>
+			<p id="channel-description"></p>
 			</section>
         </header>
         
@@ -35,22 +34,22 @@
 				<ul id="channel-blocks">
 					<li id="random-content"></li>
 				</ul>
-				<!-- <h2>All blocks</h2>
-				<p><span id="channel-count"></span> blocks</p> -->
+				<h2>All blocks</h2>
+				<p><span id="channel-count"></span> blocks</p>
 			</section>
 		</main>
 		
-		<!-- <div id="popup-bg"></div>
+		<div id="popup-bg"></div>
 		<div id="popup">
-			<h2>How would you like to be remembered?</h2>
-			<button id="remember-button">…as pop rocks</button>-->
-			<!-- <button id="forget-button">I want to be forgotten</button>
-		</div> -->
-       
+			<h2>POV: I wanted to gather things I enjoyed recently, and...</h2>
+			<button id="remember-button" onclick="handleButtonClick(1)">Wanna keep watching!</button>
+            <button id="forget-button" onclick="handleButtonClick(2)" disabled>Eh, never mind the brain vibes.</button>
+		</div>
+        
 		<!-- <footer>
 			<h2>Your authors</h2>
 			<section id="channel-users"></section>
-		</footer>   -->
+		</footer> -->
 		</div>
 	</body>
 </html>

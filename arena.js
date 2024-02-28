@@ -38,7 +38,7 @@ let renderBlock = (block) => {
 		let linkItem =
 			`
 			<li class="file">
-				<p><em>Link</em></p>
+
 				<picture>
 					<source media="(max-width: 428px)" srcset="${ block.image.thumb.url }">
 					<source media="(max-width: 640px)" srcset="${ block.image.large.url }">
@@ -57,7 +57,7 @@ let renderBlock = (block) => {
 		let imageItem =
             `
             <li class="file">
-                <p><em>Image</em></p>
+ 
                 <figure>
                 <img src="${ block.image.original.url }" alt="${ block.title }">
                 </figure>
@@ -71,8 +71,10 @@ let renderBlock = (block) => {
         let textItem =
             `
             <li class="file">
-                <p><em>Text</em></p>
-                ${ block.content_html }
+
+				<blockquote>
+				${ block.content_html }
+				</blockquote>
             </li>
             `
         channelBlocks.insertAdjacentHTML('beforeend', textItem)
@@ -88,7 +90,7 @@ let renderBlock = (block) => {
 			let videoItem =
 				`
 				<li class="file">
-					<p><em>Video</em></p>
+
 					<video controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -114,7 +116,7 @@ let renderBlock = (block) => {
 			let audioItem =
 				`
 				<li class="file">
-					<p><em>Audio</em></p>
+					
 					<audio controls src="${ block.attachment.url }"></video>
 				</li>
 				`
@@ -133,7 +135,7 @@ let renderBlock = (block) => {
 			let linkedVideoItem =
 				`
 				<li class="file">
-					<p><em>Linked Video</em></p>
+	
 					${ block.embed.html }
 				</li>
 				`
@@ -151,29 +153,29 @@ let renderBlock = (block) => {
 
 
 // It‘s always good to credit your work:
-let renderUser = (user, container) => { // You can have multiple arguments for a function!
-	let userAddress =
-		`
-		<address>
-			<img src="${ user.avatar_image.display }">
-			<h3>${ user.first_name }</h3>
-			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
-		</address>
-		`
-	container.insertAdjacentHTML('beforeend', userAddress)
-}
+// let renderUser = (user, container) => { // You can have multiple arguments for a function!
+// 	let userAddress =
+// 		`
+// 		<address>
+// 			<img src="${ user.avatar_image.display }">
+// 			<h3>${ user.first_name }</h3>
+// 			<p><a href="https://are.na/${ user.slug }">Are.na profile ↗</a></p>
+// 		</address>
+// 		`
+// 	container.insertAdjacentHTML('beforeend', userAddress)
+// }
 
 
 
 
-const files = document.querySelectorAll('#channel-blocks li');
+// const files = document.querySelectorAll('#channel-blocks li');
 
-const randomIndex = Math.floor(Math.random() * files.length);
-const randomFile = files[randomIndex];
+// const randomIndex = Math.floor(Math.random() * files.length);
+// const randomFile = files[randomIndex];
 
-const randomContent = randomFile.cloneNode(true);
+// const randomContent = randomFile.cloneNode(true);
 
-document.body.appendChild(randomContent)
+// document.body.appendChild(randomContent)
 
 
 
@@ -191,28 +193,94 @@ fetch(`https://api.are.na/v2/channels/${channelSlug}?per=100`, { cache: 'no-stor
 		})
 
 		// Also display the owner and collaborators:
-		let channelUsers = document.getElementById('channel-users') // Show them together
-		data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
-		renderUser(data.user, channelUsers)
+		// let channelUsers = document.getElementById('channel-users') // Show them together
+		// data.collaborators.forEach((collaborator) => renderUser(collaborator, channelUsers))
+		// renderUser(data.user, channelUsers)
 	})
 
 
-const popupBg = document.getElementById('popup-bg');
-const popup = document.getElementById('popup');
-const rememberButton = document.getElementById('remember-button');
-const forgetButton = document.getElementById('forget-button');
+	document.addEventListener('DOMContentLoaded', function () {
+		const popupBg = document.getElementById('popup-bg');
+		const popup = document.getElementById('popup');
+		const rememberButton = document.getElementById('remember-button');
+		const forgetButton = document.getElementById('forget-button');
+	
+		function openPopup() {
+			popupBg.style.display = 'block';
+			popup.style.display = 'block';
+			forgetButton.disabled = true;
+		}
+	
+		function closePopup() {
+			popupBg.style.display = 'none';
+			popup.style.display = 'none';
+			forgetButton.disabled = false;
+		}
+	
+		function handleButtonClick(buttonNumber) {
+			if (buttonNumber === 1) {
+				console.log("Button 1 clicked!");
+				closePopup(); 
+			} else if (buttonNumber === 2) {
+				console.log("Button 2 clicked!");
+				closePopup(); 
+			}
+		}
+	
+		rememberButton.addEventListener('click', function () {
+			handleButtonClick(1);
+		});
+	
+		forgetButton.addEventListener('click', function () {
+			handleButtonClick(2);
+		});
+	
+		window.addEventListener('load', function () {
+			openPopup();
+			forgetButton.disabled = true; 
+		});
+	});
+	
+	
 
-function openPopup() {
-  popupBg.style.display = 'block';
-  popup.style.display = 'block';
-}
 
-function closePopup() {
-  popupBg.style.display = 'none';
-  popup.style.display = 'none';
-}
+// window.addEventListener('scroll', function() {
+// 	var scrollPosition = window.scrollY;
+// 	var threshold = 200;
 
+// 	var elements = document.querySelectorAll('li');
 
-forgetButton.addEventListener('click', closePopup);
+// 	elements.forEach(function(element) {
+// 	  var elementOffset = element.offsetTop;
+// 	  var distance = scrollPosition - elementOffset;
 
-window.addEventListener('load', openPopup);
+// 	  if (distance > 0 && distance < threshold) {
+// 		element.classList.add('active');
+// 	  } else {
+// 		element.classList.remove('active');
+// 	  }
+// 	});
+//   });
+
+window.addEventListener('scroll', function() {
+	var windowHeight = window.innerHeight;
+	var scrollPosition = window.scrollY;
+	var elements = document.querySelectorAll('li');
+
+	elements.forEach(function(element) {
+	  var elementRect = element.getBoundingClientRect();
+	  var elementHeight = elementRect.height;
+	  var elementTop = elementRect.top;
+
+	  // Adjusted threshold value
+	  var threshold = windowHeight / 2;
+
+	  // Check if the center of the element is in the middle region of the viewport
+	  if (elementTop < windowHeight / 2 && elementTop + elementHeight > windowHeight / 2) {
+		element.classList.add('active');
+	  } else {
+		element.classList.remove('active');
+	  }
+	});
+  });
+  
