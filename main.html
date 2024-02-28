@@ -21,8 +21,8 @@
     <body>
 		<div class="white-rectangle">
         <header>
-			<h1 id="channel-title">
-			</h1>
+			<h2 id="channel-title" class="index">
+			</h2>
 			<section class="introduction">
 			<p><a id="channel-link" class="link" target="_blank">See on Are.na ↗</a></p>
 			<p id="channel-description"></p>
@@ -41,9 +41,10 @@
 		
 		<div id="popup-bg"></div>
 		<div id="popup">
-			<h2>POV: I wanted to gather things I enjoyed recently, and...</h2>
-			<button id="remember-button" onclick="handleButtonClick(1)">Wanna keep watching!</button>
-            <button id="forget-button" onclick="handleButtonClick(2)" disabled>Eh, never mind the brain vibes.</button>
+            <p class="top"></p>
+			<p id="pov">POV: I wanted to gather things I enjoyed recently, and...</p>
+			<p><button id="remember-button" onclick="handleButtonClick(1)">Wanna keep watching!</button></p>
+            <p><button id="forget-button" onclick="handleButtonClick(2)" disabled>Eh, never mind the brain vibes.</button></p>
 		</div>
         
 		<!-- <footer>
